@@ -1,7 +1,7 @@
 # F1-22-Telemetry
 Software that creates stat cards for the performance of drivers in a race.
 
-New Project (31)
+![image](https://github.com/jayCleverly/F1-22-Telemetry/assets/92106121/dca69ffc-3e75-4279-aae9-0e6403b509d6)
 
 This is an application that uses the f1 22 UDP parser project created by raceweek telemetry. Data is collected throughout a race and then can be analysed such that each driver who participated in a race will have their own stat card, consisting of calculated ratings for their performance. These ratings include an overall, pace, consistency, racecraft and safety rating.
 
