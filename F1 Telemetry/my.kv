@@ -1,0 +1,223 @@
+#:kivy 2.0.0
+# Filename: my.kv
+
+
+<IntroWindow>:
+    name: "intro"
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        Label:
+            text: "F1 DATA PROCESSING"
+
+        Label:
+            text: "Before use, please navigate to 'Telemetry Settings' within F1 22 Game.\nTurn UDP telemetry on and set the IP address to the same as the machine you are running this app on.\nAlso make sure all drivers turn on 'show online ids' before the session starts."
+        Button:
+            text: "Start"
+            on_release:
+                app.root.current = "league"
+                root.manager.transition.direction = "left"
+
+
+<LeagueWindow>:
+    name: "league"
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        Button:
+            text: "Go Back"
+            on_release:
+                app.root.current = "intro"
+                root.manager.transition.direction = "right"
+
+        Label:
+            text: "Enter abbreviation of league name"
+        TextInput:
+            id: league
+            multiline: False
+
+        Button:
+            text: "Continue"
+            on_press: root.btn(league)
+            on_release:
+                app.root.current = "day"
+                root.manager.transition.direction = "left"
+
+<DayWindow>:
+    name: "day"
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        Button:
+            text: "Go Back"
+            on_release:
+                app.root.current = "league"
+                root.manager.transition.direction = "right"
+
+        Label:
+            text: "Choose day of the week"
+
+        Button:
+            text: "Monday"
+            on_press: root.btn("MONDAY")
+            on_release:
+                app.root.current = "sprint"
+                root.manager.transition.direction = "left"
+
+        Button:
+            text: "Tuesday"
+            on_press: root.btn("TUESDAY")
+            on_release:
+                app.root.current = "sprint"
+                root.manager.transition.direction = "left"
+
+        Button:
+            text: "Wednesday"
+            on_press: root.btn("WEDNESDAY")
+            on_release:
+                app.root.current = "sprint"
+                root.manager.transition.direction = "left"
+
+        Button:
+            text: "Thursday"
+            on_press: root.btn("THURSDAY")
+            on_release:
+                app.root.current = "sprint"
+                root.manager.transition.direction = "left"
+
+        Button:
+            text: "Friday"
+            on_press: root.btn("FRIDAY")
+            on_release:
+                app.root.current = "sprint"
+                root.manager.transition.direction = "left"
+
+        Button:
+            text: "Saturday"
+            on_press: root.btn("SATURDAY")
+            on_release:
+                app.root.current = "sprint"
+                root.manager.transition.direction = "left"
+
+        Button:
+            text: "Sunday"
+            on_press: root.btn("SUNDAY")
+            on_release:
+                app.root.current = "sprint"
+                root.manager.transition.direction = "left"
+
+
+<SprintWindow>:
+    name: "sprint"
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        Button:
+            text: "Go Back"
+            on_release:
+                app.root.current = "day"
+                root.manager.transition.direction = "right"
+
+        Label:
+            text: "Weekend includes sprint race?"
+
+        Button:
+            text: "Yes"
+            on_press: root.btn("true")
+            on_release:
+                app.root.current = "race"
+                root.manager.transition.direction = "left"
+
+        Button:
+            text: "No"
+            on_press: root.btn("false")
+            on_release:
+                app.root.current = "race"
+                root.manager.transition.direction = "left"
+            
+
+
+<RaceWindow>:
+    name: "race"
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        Button:
+            text: "Go Back"
+            on_release:
+                app.root.current = "sprint"
+                root.manager.transition.direction = "right"
+
+        Label:
+            text: "Enter race name"
+        TextInput:
+            id: name
+            multiline: False
+
+        Button:
+            text: "Continue"
+            on_press: root.btn(name)
+            on_release:
+                app.root.current = "submit"
+                root.manager.transition.direction = "left"
+
+
+<SubmitWindow>:
+    name: "submit"
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        Button:
+            text: "Go Back"
+            on_release:
+                app.root.current = "race"
+                root.manager.transition.direction = "right"
+
+        Label:
+            text: "Happy with choices?\n(Unable to go back once confirmed)"
+
+        Button:
+            text: "Yes"
+            on_release:
+                app.root.current = "collecting"
+                root.manager.transition.direction = "left"
+
+
+<CollectingWindow>:
+    name: "collecting"
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        Label:
+            text: "Collecting Data\n(Please do not close window)"
+
+
+<FinishWindow>:
+    name: "finish"
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        Label:
+            text: "Finished collecting data\n(You may now close the window)"
+
+    Button:
+        text: "Finish"
+        on_release:
+            app.root.current = "intro"
+            root.manager.transition.direction = "right"
